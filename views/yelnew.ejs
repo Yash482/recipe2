@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/stylesheets/data.css">
+<link rel="stylesheet" href="/stylesheets/new.css">
+<%- include("partials/navbar") %>
+<div id="particles-js"></div>
+<div class="container" id="log">
+<strong><h1>Add new dish</h1></strong><br>
+
+<form action="/data" method="POST" enctype="multipart/form-data">
+    <h3>Name of the Dish</h3>
+    <input type="text" class="info" name="name" placeholder="name" required><br><br>
+    <h3> Upload Image</h3>
+    <input type="file" name="file" class="form-control-file" required><br><br>
+    <h3>Recipe</h3>
+    <textarea name="recipe"  cols="30" rows="5" style="width: 100%;" placeholder="Make in your way" required></textarea><br><br>
+    <!-- <input type="text" class="info" name="recipe" placeholder="make it" ><br><br> -->
+    <button type="submit" class="btn btn-primary btn-lg">Add</button>
+</form>
+
+</div>
+
+<script type="text/javascript" src="/javascripts/particles.js"></script>
+<script src="/javascripts/main.js"></script>
+<%- include("partials/footer") %>

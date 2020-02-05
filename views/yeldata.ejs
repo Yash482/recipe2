@@ -1,0 +1,63 @@
+<%- include("partials/header") %>
+<!-- <link rel="stylesheet" href="/stylesheets/data.css"> -->
+<link rel="stylesheet" href="/stylesheets/showdata.css"> 
+<%- include("partials/navbar") %>  
+
+<!-- <div id="particles-js"></div> -->
+
+<div class="container my-3">
+<header class="jumbotron" >
+    <h1>Welcome to Our Recipe Book</h1>
+    <p>
+        A place to show your special recipies
+    </p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="/data/new">Add new Dish</a>
+    </p>
+</header>
+
+
+<div class="row">
+    <div class="col md-9">
+        <form class="form-inline my-2 my-lg-0" action="/data/search" method="POST">
+            <input class="form-control mr-sm-2" type="text" name="searchedfood" placeholder="Search your food" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="col md-3">
+        <% if(currentUser){ %>
+            <form class="form-inline my-2 my-lg-0" action="/user/<%= currentUser.id%>/recipies" method="POST">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">My Recipes</button>
+            </form>
+        <% } %> 
+    </div>
+   
+</div>
+
+
+<div class="row">
+    <% if(foods.length >0){ %>
+        <% foods.forEach(function(food){  %>
+            <div class="col-md-4 col-sm-6 my-3">
+                <div class="thumbnail">
+                    <img  src="/uploads/<%= food.image %>" >
+                    <p class="caption"><%= food.name %></p>
+                    <a href="/data/<%= food._id %>" class="btn btn-primary">Get Recipe</a>
+                </div>
+                 
+            
+            </div>
+              
+        <% }); %>
+    
+    <% } else { %>
+         <h2 style="margin-top: 20px;">No Food Found</h2>
+    <% } %>
+</div>
+
+
+
+</div>
+ <!-- <script type="text/javascript" src="/javascripts/particles.js"></script>
+<script src="/javascripts/main.js"></script> -->
+<%- include("partials/footer") %>

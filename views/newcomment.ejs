@@ -1,0 +1,17 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/stylesheets/data.css">
+<link rel="stylesheet" href="/stylesheets/login.css">
+<%- include("partials/navbar") %>
+<div id="particles-js"></div>
+<div class="container" id="log">
+    <h2>Add new comment to <%= food.name %></h2>
+    <form action="/data/<%= food._id %>/comments" method="POST" >
+    <input type="text" class="info" name="comment[content]" placeholder="your comment">
+    <button type="submit" class="btn btn-md btn-info" style="margin-top: 1.5em;">Create</button>
+    </form>
+
+</div>
+
+<script type="text/javascript" src="/javascripts/particles.js"></script>
+<script src="/javascripts/main.js"></script>
+<%- include("partials/footer") %>

@@ -1,0 +1,55 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/stylesheets/showparticulardata.css"> 
+<%- include("partials/navbar") %>
+
+<div class="container ">
+      <div class="row">
+            <div class="col-md-4 col-sm-6 my-5 ">
+                 <div class="desc">
+                  <h1><%= food.name %></h1> 
+                  <strong><h3> Recipe :</h3></strong>
+                  <p><%= food.recipe %><</p>
+                 </div>
+
+            </div>
+            <div class="col-md-8 col-sm-6 my-4">
+                  <div class="thumbnail">
+                        <img class="img-responsive " src="/uploads/<%= food.image %>" >
+                        <div class="caption">
+                             <p class="pull-right"> Sumitted by:- <strong><%= food.author.username %></strong></p>
+                             <% if(currentUser && (food.author.id.equals(currentUser._id) || currentUser.username == "Yash Bansal" )){ %>
+                                 <a href="/data/<%= food._id %>/edit" class="btn btn-xs btn-warning">Edit</a>
+                                 <form action="/data/<%= food._id %>?_method=DELETE" style="display: inline;" method="POST">
+                                    <button class="btn btn-xs btn-danger">Delete</button>
+                                 </form> 
+                              <% } %>
+                        </div>
+                  </div>
+                  <div class="well my-4">
+                        <div class="text-right">
+                              <a href="/data/<%= food._id %>/comments/new" class="btn btn-lg btn-success">Give a review</a>
+                              <hr>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-12">
+                                    <% food.comments.forEach(function(comment){ %>
+                                         <strong> By <%= comment.author.username %></strong>
+                                        
+                                          <p>--> <%= comment.content %></p>
+                                          <% if(currentUser && (comment.author.id.equals(currentUser._id) || currentUser.username == "Yash Bansal" )){ %>
+                                                <form action="/data/<%= food._id %>/comment/<%= comment._id %>?_method=DELETE" style="display: inline;" method="POST">
+                                                    <button class="btn btn-xs btn-danger">Delete</button>
+                                                </form> 
+                                          <% } %>
+                                          <hr>
+                                    <% }) %>
+                                    
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+</div>
+
+<%- include("partials/footer") %>

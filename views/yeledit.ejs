@@ -1,0 +1,11 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+<h1>Edit <%= food.name %></h1>
+<form action="/data/<%= food._id %>?_method=PUT" method="POST">
+    <input type="text" name="food[name]" value="<%= food.name %>">
+    <input type="text" name="food[image]" value="<%= food.image %>">
+    <input type="text" name="food[recipe]" value="<%= food.recipe %>">
+    <button type="submit">Edit</button>
+</form>
+<a href="/" class="btn btn-primary btn-lg">Home</a>
+<%- include("partials/footer") %>

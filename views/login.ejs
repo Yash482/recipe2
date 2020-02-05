@@ -1,0 +1,21 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/stylesheets/data.css">
+<link rel="stylesheet" href="/stylesheets/login.css">
+<%- include("partials/navbar") %>  
+<div id="particles-js"></div>
+
+<div class="container" id="log">
+   
+<h1>Log in..</h1><br>
+<form action="/login" method="POST" >
+    <h3>Username</h3>
+    <input type="text" class="info" name="username" placeholder="username" required><br><br>
+    <h3>Password</h3>
+    <input type="password" class="info" name="password" placeholder="password" required><br><br>
+    <button class="btn btn-md btn-primary"> Submit</button>
+</form>
+
+</div>
+<script type="text/javascript" src="/javascripts/particles.js"></script>
+<script src="/javascripts/main.js"></script>
+<%- include("partials/footer") %>

@@ -1,0 +1,36 @@
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+                <a class="navbar-brand" href="/">Recipe Book</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(currentUser){  %>
+                        Signed in as <%= currentUser.username %>
+                       <li  class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                     <% } else{ %>
+                         <li class="nav-item "><a class="nav-link " href="/register">SignUp</a></li>
+                         <li class="nav-item "><a class="nav-link" href="/login">Log in</a></li>    
+                     <% } %>                        
+                 </ul>
+              </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-50">
+        <% if(error && error.length > 0){ %>
+        <div class="alert alert-dark" role="alert">
+            <h1><%= error %></h1>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <h1><%= success %></h1>
+        </div>
+        <% } %>
+    </div>
