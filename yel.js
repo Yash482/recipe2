@@ -17,7 +17,7 @@ var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var SeedDB = require("./seed.js");
 
-mongoose.connect("mongodb://localhost/yel_camp", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://yash:mnopqrst@cluster0-ubxmo.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useCreateIndex: true });
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.set("view engine", "ejs");
