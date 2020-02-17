@@ -17,12 +17,16 @@ var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var SeedDB = require("./seed.js");
 
-mongoose.connect("mongodb+srv://yash:mnopqrst@cluster0-ubxmo.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useCreateIndex: true });
-
+//mongoose.connect("mongodb+srv://yash:mnopqrst@cluster0-ubxmo.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/yel_camp',{
+   useNewUrlParser: true;
+   useUnifiedTopology: true; 
+});
 app.use(bodyParser.urlencoded({extended : true}));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + '/public'));
+
 
 
 // Image============
@@ -316,7 +320,6 @@ function isLoggedIn(req, res, next){
 }
 
 
-app.listen(3000, function(){
-    
+app.listen(process.env.PORT, process.env.IP, function(){
    console.log("yelcamp has started");
 });
